@@ -6,7 +6,7 @@ const ExampleComponent = (props) =>{
     <View>
       <Text>Text.</Text>
     </View>
-  )
-}
+  );
+};
 
 export default ExampleComponent;

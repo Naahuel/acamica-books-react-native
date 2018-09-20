@@ -12,13 +12,13 @@ const Loading = (props) =>{
         />
       </View>
     ) : false
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     padding: padding.md
   }
-})
+});
 
 export default Loading;

@@ -6,18 +6,18 @@ const Book = (props) =>{
   const {image, author, description, url} = props;
   const _handleButtonPress = () => {
     Linking.openURL(url)
-           .catch(err => {
-              Alert.alert('Oh snap!', 'Something went wrong');
-              console.log(err);
-           }); 
-  }
+      .catch(err => {
+        Alert.alert('Oh snap!', 'Something went wrong');
+        console.log(err);
+      }); 
+  };
 
   return(
     <View style={styles.bookContainer}>
       <View style={styles.bookHeaderContainer}>
         <View style={styles.bookImage}>
           <Image 
-            style={{width: 60, height: 90}}
+            style={styles.bookImageImage}
             source={{uri: image}}
           />
         </View>
@@ -32,8 +32,8 @@ const Book = (props) =>{
         <Button title="Check on Amazon" onPress={_handleButtonPress} />
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   bookContainer:{
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  bookImageImage: {width: 60, height: 90},
   bookDescriptionContainer: {
     flex:3,
     padding: padding.sm,

@@ -4,13 +4,13 @@ export const colors = {
   normalText: '#333333',
   background: '#FFFFFF',
   secondaryBackground: '#cccccc'
-}
+};
 
 export const padding = {
   sm: 10,
   md: 15,
   lg: 20
-}
+};
 
 export const fonts = {
   size: {
@@ -19,4 +19,4 @@ export const fonts = {
     lg: 28,
   },
   primary: 'System'
-}
+};
