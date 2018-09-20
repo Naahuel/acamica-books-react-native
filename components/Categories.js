@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, TouchableHighlight, StyleSheet, Text, FlatList} from 'react-native';
 import {colors, padding} from './_base';
+import Loading from './common/Loading';
 
 export default class Categories extends React.Component {
   constructor(props){
@@ -26,6 +27,7 @@ export default class Categories extends React.Component {
   render(){
     return (
       <View>
+        <Loading isLoading={this.state.loading} />
         <FlatList
           data={this.state.data}
           keyExtractor={item => item.id}

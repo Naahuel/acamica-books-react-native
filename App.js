@@ -15,7 +15,7 @@ export default class App extends React.Component {
           description={'lorem ipsum'}
           url={'https://www.amazon.com'}
         /> */}
-        <Categories />
+        <Category />
       </View>
     );
   }
