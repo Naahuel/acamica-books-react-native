@@ -58,7 +58,7 @@ export default class Category extends React.Component {
             <TouchableHighlight
               style={styles.listItem}
               underlayColor={colors.primary}
-              onPress={() => console.log('pressed')}
+              onPress={this.props.onItemPress.bind(this, item.id)}
             >
               <Text>{item.name}</Text>
             </TouchableHighlight>

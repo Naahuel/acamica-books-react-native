@@ -7,7 +7,12 @@ export default class CategoryScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Category id={this.props.navigation.state.params.id} />
+        <Category
+          id={this.props.navigation.state.params.id}
+          onItemPress={(bookId) => {
+            this.props.navigation.navigate('Book', {id: bookId});
+          }}
+        />
       </View>
     );
   }

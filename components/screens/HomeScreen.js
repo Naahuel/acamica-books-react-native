@@ -19,6 +19,9 @@ export default class HomeScreen extends React.Component {
           id={'0'}
           limit={3}
           disableInfiniteScroll={true}
+          onItemPress={(bookId) => {
+            this.props.navigation.navigate('Book', {id: bookId});
+          }}
         />
       </View>
     );
@@ -26,7 +29,7 @@ export default class HomeScreen extends React.Component {
 }
 
 HomeScreen.navigationOptions = {
-  title: 'Books'
+  title: 'Recommended Books'
 };
 
 const styles = StyleSheet.create({

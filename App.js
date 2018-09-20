@@ -3,6 +3,7 @@ import HomeScreen from './components/screens/HomeScreen';
 import { colors } from './components/_base';
 import CategoriesScreen from './components/screens/CategoriesScreen';
 import CategoryScreen from './components/screens/CategoryScreen';
+import BookScreen from './components/screens/BookScreen';
 
 export default createStackNavigator(
   {
@@ -14,6 +15,9 @@ export default createStackNavigator(
     },
     Category: {
       screen: CategoryScreen
+    },
+    Book: {
+      screen: BookScreen
     }
   },
   {
