@@ -2,7 +2,8 @@ export const colors = {
   primary: '#28F1A6',
   secondary: '#188A32',
   normalText: '#333333',
-  background: '#FFFFFF'
+  background: '#FFFFFF',
+  secondaryBackground: '#cccccc'
 }
 
 export const padding = {

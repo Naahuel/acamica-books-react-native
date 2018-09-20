@@ -3,8 +3,9 @@ import {Alert, Image, Button, View, Text, StyleSheet, Linking} from 'react-nativ
 import {colors, padding, fonts} from './_base';
 
 const Book = (props) =>{
+  const {image, author, description, url} = props;
   const _handleButtonPress = () => {
-    Linking.openURL('https://google.com')
+    Linking.openURL(url)
            .catch(err => {
               Alert.alert('Oh snap!', 'Something went wrong');
               console.log(err);
@@ -17,15 +18,15 @@ const Book = (props) =>{
         <View style={styles.bookImage}>
           <Image 
             style={{width: 60, height: 90}}
-            source={{uri: 'https://placehold.it/60x90'}}
+            source={{uri: image}}
           />
         </View>
         <View style={styles.bookAuthor}>
-          <Text>by <Text style={styles.bookAuthorText}>Author</Text></Text>
+          <Text>by <Text style={styles.bookAuthorText}>{author}</Text></Text>
         </View>
       </View>
       <View style={styles.bookDescriptionContainer}>
-        <Text>Description</Text>
+        <Text>{description}</Text>
       </View>
       <View style={styles.bookButtonContainer}>
         <Button title="Check on Amazon" onPress={_handleButtonPress} />
@@ -66,8 +67,7 @@ const styles = StyleSheet.create({
     height: 50,
     padding: padding.sm,
     flexDirection: 'column',
-    justifyContent: 'center',
-    // backgroundColor: 'blue'
+    justifyContent: 'center'
   }
 });
 
