@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, TouchableHighlight, StyleSheet, Text, FlatList} from 'react-native';
+import PropTypes from 'prop-types';
+import {Alert, View, TouchableHighlight, StyleSheet, Text, FlatList} from 'react-native';
 import {colors, padding} from './_base';
 import Loading from './common/Loading';
 
@@ -9,10 +10,10 @@ export default class Category extends React.Component {
     this.state = {
       data: [],
       loading: true,
-      page: 1,
-      limit: 18,
-      noMore: false
-    }
+      page: props.page || 1,
+      limit: props.limit || 18,
+      noMore: props.disableInfiniteScroll || false
+    };
 
     this.getData  = this.getData.bind(this);
     this.loadMore = this.loadMore.bind(this);
@@ -26,15 +27,16 @@ export default class Category extends React.Component {
    * Get the list of books for this category
    */
   getData(){
-    const {page, limit} = this.state;
-    fetch(`http://acamicaexample.herokuapp.com/books?category_id=0&_page=${page}&_limit=${limit}`)
-    .then(response =>response.json())
-    .then(data => this.setState({
-      data: [...this.state.data, ...data],
-      noMore: data.length < limit
-    }))
-    .catch(error => Alert.alert('Oh snap!', 'Failed to get books.'))
-    .finally(_ => this.setState({loading: false}));
+    const {page, limit, noMore} = this.state;
+    const {id} = this.props;
+    fetch(`http://acamicaexample.herokuapp.com/books?category_id=${id}&_page=${page}&_limit=${limit}`)
+      .then(response =>response.json())
+      .then(data => this.setState({
+        data: [...this.state.data, ...data],
+        noMore: noMore || data.length < limit
+      }))
+      .catch(error => Alert.alert('Oh snap!', 'Failed to get books.'))
+      .finally(_ => this.setState({loading: false}));
   }
 
   /**
@@ -53,7 +55,7 @@ export default class Category extends React.Component {
           data={this.state.data}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <TouchableHighlight 
+            <TouchableHighlight
               style={styles.listItem}
               underlayColor={colors.primary}
               onPress={() => console.log('pressed')}
@@ -66,9 +68,16 @@ export default class Category extends React.Component {
           ListFooterComponent={<Loading isLoading={this.state.loading} />}
         />
       </View>
-    )
+    );
   }
 }
+
+Category.propTypes = {
+  id: PropTypes.string.isRequired,
+  limit: PropTypes.number,
+  page: PropTypes.number,
+  disableInfiniteScroll: PropTypes.bool  
+};
 
 const styles = StyleSheet.create({
   listItem: {

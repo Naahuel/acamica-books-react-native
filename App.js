@@ -1,29 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Book from './components/Book';
-import Category from './components/Category';
-import Categories from './components/Categories';
+import { createStackNavigator } from 'react-navigation';
+import HomeScreen from './components/screens/HomeScreen';
 import { colors } from './components/_base';
+import CategoriesScreen from './components/screens/CategoriesScreen';
+import CategoryScreen from './components/screens/CategoryScreen';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        {/* <Book
-          author={'Charles D.'}
-          image={'https://placehold.it/60x90'}
-          description={'lorem ipsum'}
-          url={'https://www.amazon.com'}
-        /> */}
-        <Category />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.secondaryBackground
+export default createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen
+    },
+    Categories: {
+      screen: CategoriesScreen
+    },
+    Category: {
+      screen: CategoryScreen
+    }
   },
-});
+  {
+    initialRouteName: 'Home',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: colors.primary
+      },
+      headerTintColor: colors.normalText,
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }
+  }
+);

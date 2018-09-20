@@ -9,7 +9,7 @@ export default class Categories extends React.Component {
     this.state = {
       data: [],
       loading: true
-    }
+    };
   }
 
   componentDidMount(){
@@ -18,10 +18,10 @@ export default class Categories extends React.Component {
 
   getData(){
     fetch('http://acamicaexample.herokuapp.com/categories')
-    .then(response =>response.json())
-    .then(data => this.setState({data}))
-    .catch(error => Alert.alert('Oh snap!', 'Failed to get categories.'))
-    .finally(_ => this.setState({loading: false}));
+      .then(response =>response.json())
+      .then(data => this.setState({data}))
+      .catch(error => Alert.alert('Oh snap!', 'Failed to get categories.'))
+      .finally(_ => this.setState({loading: false}));
   }
 
   render(){
@@ -35,14 +35,14 @@ export default class Categories extends React.Component {
             <TouchableHighlight 
               style={styles.listItem}
               underlayColor={colors.primary}
-              onPress={() => console.log('pressed')}
+              onPress={this.props.onItemPress.bind(this, item.id)}
             >
               <Text>{item.name}</Text>
             </TouchableHighlight>
           )}
         />
       </View>
-    )
+    );
   }
 }
 
