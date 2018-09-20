@@ -32,7 +32,7 @@ export default class BookScreen extends React.Component {
   render() {
     const {loading, data: book} = this.state;
     return (
-      loading ? <Loading /> :
+      loading ? <Loading isLoading={loading} /> :
         <View style={styles.container}>
           <Book
             author={book.author}
