@@ -1,0 +1,4 @@
+#Thu Sep 20 15:05:46 ART 2018
+base.0=/home/nahuel.jose/react-native/acamica-books/android/app/build/intermediates/transforms/dexMerger/debug/18
+path.0=classes.dex
+renamed.0=classes.dex
